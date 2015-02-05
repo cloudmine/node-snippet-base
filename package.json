@@ -1,26 +1,32 @@
 {
   "name": "node-snippet-base",
   "version": "0.1.0",
+  "author": "CloudMine",
+  "license": "MIT",  
   "description": "A starter Node Snippet for CloudMine Snippets",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm install ../node-coderunner",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "postinstall": "",
+    "test": ""
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudmine/node-snippet-base.git"
   },
   "keywords": [
-    "CloudMine"
+    "CloudMine",
+    "cloudmine"
   ],
-  "author": "CloudMine",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cloudmine/node-snippet-base/issues"
   },
   "homepage": "https://github.com/cloudmine/node-snippet-base",
+  "engines": {
+    "node": "0.10.35",
+    "npm": "2.5.0"
+  },
   "dependencies": {
-    "cloudmine-node-coderunner": "*"
+    "cloudmine-servercode": "cloudmine/node-coderunner"
   }
 }
