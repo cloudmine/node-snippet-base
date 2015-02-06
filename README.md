@@ -1,3 +1,3 @@
 # Example CloudMine Server Code Snippet
 
-This 
+This is a
