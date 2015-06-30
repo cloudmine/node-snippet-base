@@ -3,8 +3,8 @@ var AsyncSnippet = require('./lib/async_snippet');
 var CloudMineNode = require('cloudmine-servercode');
 
 module.exports = {
-  basicSnippet: BasicSnippet,
-  AsyncSnippet: AsyncSnippet
+  basic: BasicSnippet,
+  async: AsyncSnippet
 };
 
 CloudMineNode.start(module, './index.js', function(err) {
