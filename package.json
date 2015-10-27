@@ -1,6 +1,6 @@
 {
   "name": "node-snippet-base",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "CloudMine",
   "license": "MIT",  
   "description": "A starter Node Snippet for CloudMine Snippets",
@@ -27,6 +27,6 @@
     "npm": "2.5.0"
   },
   "dependencies": {
-    "cloudmine-servercode": "cloudmine/node-coderunner"
+    "cloudmine-servercode": "0.9.1"
   }
 }
