@@ -1,6 +1,6 @@
 # Example CloudMine Server Code Snippet
 
-This is a example of how to structure your project for running on CloudMine's dynamic cloud dispatch.
+This is a example of how to structure your project for running on CloudMine's PaaS.
 
 The `lib` folder has snippets which are just pieces of node code. The `index.js` has the important parts of the code.
 
