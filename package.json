@@ -27,6 +27,6 @@
     "npm": "2.5.0"
   },
   "dependencies": {
-    "cloudmine-servercode": "0.9.1"
+    "cloudmine-servercode": "0.9.3"
   }
 }
