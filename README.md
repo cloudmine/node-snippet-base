@@ -12,4 +12,4 @@ To run locally:
 1. Run `npm install` from the directory if you haven't done so already.
 2. Run `node index.js` to start the server.
 3. Use `curl`, `wget`, or your favorite method of running http commands. Check out `localhost:4545/names` for a list of the endpoints you can call. It comes with "basic" and "async" out of the box. To run one, issue a GET request to `localhost:4545/code/ENDPOINTNAME` (for example, `localhost:4545/code/basic`).
-3a. Note that you can check process.env.CLOUDMINE to determine whether you are running locally (false) or in the CloudMine Apollo PaaS environment (true)
+4. Note that you can check process.env.CLOUDMINE to determine whether you are running locally (false) or in the CloudMine Apollo PaaS environment (true)
