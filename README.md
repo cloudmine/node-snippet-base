@@ -1,10 +1,33 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Example CloudMine Server Code Snippet](#example-cloudmine-server-code-snippet)
+  - [Getting Started](#getting-started)
+  - [Running Snippets Locally](#running-snippets-locally)
+      - [Obtain a Listing of Available Snippets](#obtain-a-listing-of-available-snippets)
+      - [Executing a Snippet](#executing-a-snippet)
+- [Implementation Notes](#implementation-notes)
+    - [1. Accessing environment details via the `req	` variable](#1-accessing-environment-details-via-the-req%09-variable)
+      - [Request Verb](#request-verb)
+      - [Request Body](#request-body)
+      - [Query String](#query-string)
+      - [Session Data](#session-data)
+      - [Cloud or Local Environment](#cloud-or-local-environment)
+    - [2. Replying to API requests via the `reply` function](#2-replying-to-api-requests-via-the-reply-function)
+      - [Replying with a String or Integer](#replying-with-a-string-or-integer)
+      - [Replying with a JSON Object](#replying-with-a-json-object)
+    - [3. Preparing the ZIP Package for CloudMine](#3-preparing-the-zip-package-for-cloudmine)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Example CloudMine Server Code Snippet
 
 This repo is an example around how to structure your project for deployment on CloudMine's Apollo.
 
 The `lib` folder contains snippets which are nodeJS files with `export` objects. `index.js` is responsible for starting the server and enumerating the valid snippet endpoints that your package exports.
 
-##Getting Started
+## Getting Started
 
 1. In `index.js`, the `module.exports` call **must** occur before the `.start` method is called, otherwise Apollo will not be able to identify public snippets available for invocation. 
 2. `CloudMineNode.start` requires the current scope, the root file, and has a callback to let you know when the package is ready for inbound requests.
@@ -18,7 +41,7 @@ In order to run your CloudMine Snippets locally, please follow the below instruc
 3. Next, run `node index.js` to start the server.
 4. Finally, `curl`, `wget`, or use your favorite method of running HTTP commands using the below examples.
 
-####Obtain a Listing of Available Snippets
+#### Obtain a Listing of Available Snippets
 
 Request: 
 
@@ -28,7 +51,7 @@ Response:
 
 `["basic","async"]`
 
-####Executing a Snippet
+#### Executing a Snippet
  
 Request:
 
@@ -38,14 +61,14 @@ Response:
 
 `{"success":"Basic was called"}`
  
-##Implementation Notes
+# Implementation Notes
 
 Historically, CloudMine snippets use the `data` environment variable, and the `exit` function in order to reply to inbound requests. With Apollo, both a new environment variable and exit function will be introduces: `req` and `reply`, respectively. 
 
 
-###1. Accessing environment details via the `req	` variable
+### 1. Accessing environment details via the `req	` variable
 
-####Request Verb
+#### Request Verb
 ```
 console.log(req.payload.request.method);
 ```
@@ -55,7 +78,7 @@ Output:
 POST
 ```
 
-####Request Body
+#### Request Body
 ```
 console.log(req.payload.request.body);
 ```
@@ -65,7 +88,7 @@ Output:
 { objId: { key1: 'value1', key2: 'value2' } }
 ```
 
-####Query String
+#### Query String
 ```
 console.log(req.payload.params);
 ```
@@ -77,11 +100,7 @@ Output:
   queryStringParam2: 'queryStringValue2' }
 ```
 
-####Form Data (Binary Data Files and URL Encoded Forms)
-
-TODO!!
-
-####Session Data
+#### Session Data
 
 ```
 console.log(req.payload.session)
@@ -94,7 +113,7 @@ Output:
   session_token: '6c160b8140fc43e28ff9bf7bb00f198e' }
 ```
 
-####Cloud or Local Environment
+#### Cloud or Local Environment
 
 Note that `process.env.CLOUDMINE` may be used to determine whether the code is running locally (false) or in the CloudMine Apollo PaaS environment (true). Example usage is below:
 
@@ -111,17 +130,65 @@ else{
 }
 ```
 
-###2. Replying to API requests via the `reply` function
+### 2. Replying to API requests via the `reply` function
 
-TODO: example
+There are two types of values that may be passed into the `reply` function: Strings and Ints as well as JSON objects. 
 
-###3. Common Design Patterns for Backgrounding Long-Running Snippets 
+#### Replying with a String or Integer 
 
-TODO: custom events in JS code --> create and update object as to status
+When using the `reply` function with only a `String` or `Integer`, the value will be returned as part of the `result` key. 
 
-TODO: push notification to the client, email to user, etc.. 
+Example:
 
-###4. Preparing the ZIP Package for CloudMine
+```
+var a = 6;
+reply(a);
+```
+or
+
+```
+var b = "This is a string!";
+reply(b);
+```
+
+Output:
+
+```
+{
+  "result": 6
+}
+```
+or
+
+```
+{
+  "result": "This is a string!"
+}
+```
+
+#### Replying with a JSON Object 
+
+When replying with a JSON shape, the contents of the object will be nested within the `result` shape. 
+
+Example:
+
+```
+setTimeout(function() {
+    reply({text: 'This took 5 seconds!'});
+  }, 5000);
+```
+
+Output:
+
+```
+{
+  "result": {
+    "text": "This took 5 seconds!"
+  }
+}
+```
+
+### 3. Preparing the ZIP Package for CloudMine
 
 When uploading your ZIP package to CloudMine's servers, please be sure that:
 
