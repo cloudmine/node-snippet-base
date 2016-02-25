@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "",
+    "postinstall": "cp -r node_modules/cloudmine-servercode/.ebextensions .",
     "test": ""
   },
   "repository": {
@@ -27,6 +27,6 @@
     "npm": "2.5.0"
   },
   "dependencies": {
-    "cloudmine-servercode": "0.9.5"
+    "cloudmine-servercode": "cloudmine/node-coderunner"
   }
 }
