@@ -38,7 +38,7 @@ In order to run your CloudMine Snippets locally, please follow the below instruc
 
 1. Ensure that all NPM module dependencies are defined in `package.json`. 
 2. Run `npm install` from the root directory to ensure that the dependencies are included into the project. 
-3. Next, run `node index.js` to start the server.
+3. Next, run `npm test` to start the server in local test mode.
 4. Finally, `curl`, `wget`, or use your favorite method of running HTTP commands using the below examples.
 
 #### Obtain a Listing of Available Snippets
@@ -55,7 +55,7 @@ Response:
  
 Request:
 
-`localhost:4545/code/basic`
+`localhost:4545/v1/app/{appid}/run/basic`
 
 Response:
 

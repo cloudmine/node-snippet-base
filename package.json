@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node index.js",
     "postinstall": "",
-    "test": ""
+    "test": "LOCAL_TESTING=true node index.js"
   },
   "repository": {
     "type": "git",
