@@ -29,7 +29,7 @@ The `lib` folder has snippets which are just pieces of node code. The `index.js`
 
 ## Getting Started
 
-1. In `index.js`, the `module.exports` call **must** occur before the `.start` method is called, otherwise Apollo will not be able to identify public snippets available for invocation. 
+1. In `index.js`, the `module.exports` call **must** occur before the `.start` method is called, otherwise Logic Engine will not be able to identify public snippets available for invocation.
 2. `CloudMineNode.start` requires the current scope, the root file, and has a callback to let you know when the package is ready for inbound requests.
 
 ## Running Snippets Locally
@@ -38,7 +38,7 @@ In order to run your CloudMine Snippets locally, please follow the below instruc
 
 1. Ensure that all NPM module dependencies are defined in `package.json`. 
 2. Run `npm install` from the root directory to ensure that the dependencies are included into the project. 
-3. Next, run `npm test` to start the server in local test mode.
+3. Next, run `npm run local` to start the server in local test mode.
 4. Finally, `curl`, `wget`, or use your favorite method of running HTTP commands using the below examples.
 
 #### Obtain a Listing of Available Snippets
@@ -63,7 +63,7 @@ Response:
  
 # Implementation Notes
 
-Historically, CloudMine snippets use the `data` environment variable, and the `exit` function in order to reply to inbound requests. With Apollo, both a new environment variable and exit function will be introduces: `req` and `reply`, respectively. 
+Historically, CloudMine snippets use the `data` environment variable, and the `exit` function in order to reply to inbound requests. With Logic Engine, both a new environment variable and exit function will be introduces: `req` and `reply`, respectively.
 
 
 ### 1. Accessing environment details via the `req	` variable
@@ -115,7 +115,7 @@ Output:
 
 #### Cloud or Local Environment
 
-Note that `process.env.CLOUDMINE` may be used to determine whether the code is running locally (false) or in the CloudMine Apollo PaaS environment (true). Example usage is below:
+Note that `process.env.CLOUDMINE` may be used to determine whether the code is running locally (false) or in the CloudMine Logic Engine PaaS environment (true). Example usage is below:
 
 ```
 var isCloud = process.env.CLOUDMINE;
