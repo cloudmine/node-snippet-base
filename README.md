@@ -124,7 +124,7 @@ Output:
 var isCloud = process.env.CLOUDMINE;
 
 var local_config = {};
-localConfig = {
+local_config = {
 	"api_key":"localEnvApiKey",
 	"app_id":"localAppId"
 };
