@@ -23,9 +23,9 @@
 
 # Example CloudMine Server Code Snippet
 
-This is a example of how to structure your project for running on CloudMine's PaaS.
+This is an example of how to structure your NodeJS project for deployment and execution on CloudMine's Logic Engine.
 
-The `lib` folder has snippets which are just pieces of node code. The `index.js` has the important parts of the code.
+The `lib` folder contains Snippets which are just pieces of NodeJS code. The `index.js` file is responsible for starting a mini-web server which routes inbound Snippet requests, as well as collating and exposing the named methods which form the basis of your CloudMine API. 
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ The `lib` folder has snippets which are just pieces of node code. The `index.js`
 
 ## Running Snippets Locally
 
-In order to run your CloudMine Snippets locally, please follow the below instructions. 
+In order to run your CloudMine Snippets locally, please follow the below instructions: 
 
 1. Ensure that all NPM module dependencies are defined in `package.json`. 
 2. Run `npm install` from the root directory to ensure that the dependencies are included into the project. 
@@ -63,7 +63,7 @@ Response:
  
 # Implementation Notes
 
-Historically, CloudMine snippets use the `data` environment variable, and the `exit` function in order to reply to inbound requests. With Logic Engine, both a new environment variable and exit function will be introduces: `req` and `reply`, respectively.
+Historically, CloudMine snippets use the `data` environment variable, and the `exit` function in order to reply to inbound requests. With Logic Engine, both a new environment variable and exit function are included: `req` and `reply`, respectively.
 
 
 ### 1. Accessing environment details via the `req	` variable
@@ -110,24 +110,27 @@ Output:
 ```
 { api_key: '4fb3caf6fa53442fb921dd93ae0c98e6',
   app_id: '3f4501961d62bc4eb388d9dc6dfdd1e5',
-  session_token: '6c160b8140fc43e28ff9bf7bb00f198e' }
+  session_token: '6c160b8140fc43e28ff9bf7bb00f198e',
+  user_id: 'bd027836e4744391ba2aabf6aacdc828' }
 ```
+
+**Note:** in order for the `session_token` and `user_id` values to populate, the `X-CloudMine-SessionToken` request header must be present in the original request and the `session_token` must be valid.
 
 #### Cloud or Local Environment
 
-Note that `process.env.CLOUDMINE` may be used to determine whether the code is running locally (false) or in the CloudMine Logic Engine PaaS environment (true). Example usage is below:
+`process.env.CLOUDMINE` may be used to determine whether the code is running locally (false) or in the CloudMine Logic Engine environment (true). Example usage is below:
 
 ```
 var isCloud = process.env.CLOUDMINE;
 
-if(isCloud){
-    console.log("IsCloud!");
-    //Configure appropriate environment details
-}
-else{
-    console.log("IsLocal!");
-    //Configure appropriate environment details 
-}
+var local_config = {};
+localConfig = {
+	"api_key":"localEnvApiKey",
+	"app_id":"localAppId"
+};
+
+var ApiKey = isCloud ? req.payload.session.api_key : local_config.api_key;
+var AppId = isCloud ? req.payload.session.app_id : local_config.app_id;
 ```
 
 ### 2. Replying to API requests via the `reply` function
