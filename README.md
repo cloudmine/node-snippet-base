@@ -213,6 +213,7 @@ I called a snippet!
 #### Setting the `Accept` Header
 
 The `Accept` header can be used in the snippet execution request to change the `Content-Type` header of the response as well as the format of the payload. There are two supported values for the `Accept` header:
+
 1. text/plain
 2. application/xml
 
@@ -225,9 +226,9 @@ Any other value in the `Accept` header will be ignored and the `Content-Type` on
 ##### JSON to XML Conversion Rules
 
 1. Object property names will become XML tags that wrap the value of that property
-2. Properties will values null, undefined, or empty string will be represented with an empty tag (e.g. `<Name/>`)
+2. Properties with values null, undefined, or empty string will be represented with an empty tag (e.g. `<Name/>`)
 3. Each element in an array will be wrapped in an `<element>` tag
-#
+
 ##### JSON to XML Conversion Example
 
 If you would have received a JSON response such as:
