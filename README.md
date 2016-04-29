@@ -17,7 +17,13 @@
     - [2. Replying to API requests via the `reply` function](#2-replying-to-api-requests-via-the-reply-function)
       - [Replying with a String or Integer](#replying-with-a-string-or-integer)
       - [Replying with a JSON Object](#replying-with-a-json-object)
-    - [3. Preparing the ZIP Package for CloudMine](#3-preparing-the-zip-package-for-cloudmine)
+    - [3. Controlling the Snippet Response](#3-controlling-the-snippet-response)
+      - [Using the `unwrap_result` Query Param](#using-the-unwrap_result-query-param)
+      - [Setting the `Accept` Header](#setting-the-accept-header)
+        - [JSON to XML Conversion Rules](#json-to-xml-conversion-rules)
+        - [JSON to XML Conversion Example](#json-to-xml-conversion-example)
+      - [Combining `unwrap_result` and the `Accept` Header](#combining-unwrap_result-and-the-accept-header)
+    - [4. Preparing the ZIP Package for CloudMine](#4-preparing-the-zip-package-for-cloudmine)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -192,7 +198,7 @@ Output:
 
 There are options that can be used to control the response from the snippet beyond the `reply` interface.
 
-#### Using the `unwrap_result` query param
+#### Using the `unwrap_result` Query Param
 
 By specifying `unwrap_result=true` in the query string of the snippet execution request, the output of the snippet will not be wrapped in a `result` attribute.
 
