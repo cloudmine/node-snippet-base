@@ -214,8 +214,8 @@ I called a snippet!
 
 The `Accept` header can be used in the snippet execution request to change the `Content-Type` header of the response as well as the format of the payload. There are two supported values for the `Accept` header:
 
-1. text/plain
-2. application/xml
+1. `text/plain`
+2. `application/xml`
 
 If `text/plain` is used, the payload does not change as all json payloads are already delivered as text, but the `Content-Type` on the response will be set to `text/plain`.
 
@@ -261,7 +261,7 @@ as XML it would become:
 </result>
 ```
 
-#### Combining `unwrap_result` and the Accept Header
+#### Combining `unwrap_result` and the `Accept` Header
 
 The `unwrap_result` query param and the `Accept` header can be combined to have any plain text response that you would like. For example, if you would like to create an XML output that does not use the same rules as described above you could build this XML as a string in the snippet. If you pass the `unwrap_result` query param to the request and simultaneously specify `application/xml` or `text/plain` in the `Accept` header you will receive the exact XML string you output in your snippet. Note that if your snippet output is any non-object, non-array value and `application/xml` is specified in the `Accept` header, no transformation or validation will be done on the value. CloudMine assumes you are doing this purposefully and it is up to you to ensure the XML is valid.
 
