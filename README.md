@@ -43,8 +43,8 @@ The `lib` folder contains Snippets which are just pieces of NodeJS code. The `in
 In order to run your CloudMine Snippets locally, please follow the below instructions: 
 
 1. Ensure that all NPM module dependencies are defined in `package.json`. 
-2. Run `npm install` from the root directory to ensure that the dependencies are included into the project. 
-3. Next, run `npm run local` or `npm run server` to start the server in local test mode.
+2. Run `npm install` from the project's root directory to ensure that the dependencies are included into the project.
+3. Next, run `npm start` to start the server from the command line.
 4. Finally, `curl`, `wget`, or use your favorite method of running HTTP commands using the below examples.
 
 #### Obtain a Listing of Available Snippets
