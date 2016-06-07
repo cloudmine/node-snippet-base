@@ -12,8 +12,8 @@
       - [Request Verb](#request-verb)
       - [Request Body](#request-body)
       - [Query String](#query-string)
-      - [Session Data](#session-data)
       - [Client IP](#client-ip)
+      - [Session Data](#session-data)
       - [Cloud or Local Environment](#cloud-or-local-environment)
     - [2. Replying to API requests via the `reply` function](#2-replying-to-api-requests-via-the-reply-function)
       - [Replying with a String or Integer](#replying-with-a-string-or-integer)
@@ -106,6 +106,16 @@ Output:
   queryStringParam1: 'queryStringValue1',
   queryStringParam2: 'queryStringValue2' }
 ```
+#### Client IP
+
+```
+console.log(req.payload.request.originating_ip)
+```
+Output:
+
+```
+166.171.56.242
+```
 
 #### Session Data
 
@@ -119,17 +129,6 @@ Output:
   app_id: '3f4501961d62bc4eb388d9dc6dfdd1e5',
   session_token: '6c160b8140fc43e28ff9bf7bb00f198e',
   user_id: 'bd027836e4744391ba2aabf6aacdc828' }
-```
-
-#### Client IP
-
-```
-console.log(req.payload.request.originating_ip)
-```
-Output:
-
-```
-166.171.56.242
 ```
 
 
