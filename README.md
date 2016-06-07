@@ -13,6 +13,7 @@
       - [Request Body](#request-body)
       - [Query String](#query-string)
       - [Session Data](#session-data)
+      - [Client IP](#client-ip)
       - [Cloud or Local Environment](#cloud-or-local-environment)
     - [2. Replying to API requests via the `reply` function](#2-replying-to-api-requests-via-the-reply-function)
       - [Replying with a String or Integer](#replying-with-a-string-or-integer)
@@ -72,7 +73,7 @@ Response:
 Historically, CloudMine snippets use the `data` environment variable, and the `exit` function in order to reply to inbound requests. With Logic Engine, both a new environment variable and exit function are included: `req` and `reply`, respectively.
 
 
-### 1. Accessing environment details via the `req` variable
+### 1. Accessing request details via the `req` variable
 
 #### Request Verb
 ```
@@ -119,6 +120,18 @@ Output:
   session_token: '6c160b8140fc43e28ff9bf7bb00f198e',
   user_id: 'bd027836e4744391ba2aabf6aacdc828' }
 ```
+
+#### Client IP
+
+```
+console.log(req.payload.request.originating_ip)
+```
+Output:
+
+```
+166.171.56.242
+```
+
 
 **Note:** in order for the `session_token` and `user_id` values to populate, the `X-CloudMine-SessionToken` request header must be present in the original request and the `session_token` must be valid.
 
