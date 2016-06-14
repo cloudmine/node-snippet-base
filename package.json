@@ -6,8 +6,7 @@
   "description": "A starter Node Snippet for CloudMine Snippets",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
