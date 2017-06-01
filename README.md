@@ -95,6 +95,16 @@ Output:
 { objId: { key1: 'value1', key2: 'value2' } }
 ```
 
+#### Request Headers
+```
+console.log(req.payload.request.headers);
+```
+Output:
+
+```
+{ x-cloudmine-apikey: 'myapikey', x-custom-header: 'mycustomheader' }
+```
+
 #### Query String
 ```
 console.log(req.payload.params);
