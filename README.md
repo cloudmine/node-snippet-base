@@ -15,6 +15,7 @@
       - [Client IP](#client-ip)
       - [Session Data](#session-data)
       - [Cloud or Local Environment](#cloud-or-local-environment)
+      - [Headers](#headers)
     - [2. Replying to API requests via the `reply` function](#2-replying-to-api-requests-via-the-reply-function)
       - [Replying with a String or Integer](#replying-with-a-string-or-integer)
       - [Replying with a JSON Object](#replying-with-a-json-object)
@@ -160,6 +161,33 @@ local_config = {
 var ApiKey = isCloud ? req.payload.session.api_key : local_config.api_key;
 var AppId = isCloud ? req.payload.session.app_id : local_config.app_id;
 ```
+#### Headers
+
+```
+console.log(req.payload.request.headers)
+```
+
+Output:
+
+```
+{
+      "host": "api.cloudmine.me",
+      "x-real-ip": "10.45.1.56",
+      "x-forwarded-for": "108.16.228.74, 127.0.0.1, 10.45.1.56",
+      "connection": "close",
+      "user-agent": "curl/7.51.0",
+      "accept": "*/*",
+      "content-type": "application/json",
+      "x-cloudmine-apikey": "3e3f6e4796b745c78f2769a93ca1d08e",
+      "x-forwarded-proto": "https",
+      "x-ssl-version": "TLSv1.2",
+      "x-ssl-cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "x-unique-id": "7F000001:988A_7F000001:22B8_59400240_0C66:250A",
+      "my-custom-header: true"
+      
+    }
+```
+
 
 ### 2. Replying to API requests via the `reply` function
 
