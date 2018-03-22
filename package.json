@@ -1,8 +1,8 @@
 {
   "name": "node-snippet-base",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "CloudMine",
-  "license": "MIT",  
+  "license": "MIT",
   "description": "A starter Node Snippet for CloudMine Snippets",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,6 @@
     "npm": "2.5.0"
   },
   "dependencies": {
-    "cloudmine-servercode": "1.2.0"
+    "cloudmine-servercode": "1.2.1"
   }
 }
